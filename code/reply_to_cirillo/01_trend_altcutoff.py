@@ -19,9 +19,8 @@ Input:  251025_sugar_data_for_cox.dta  (UK Biobank derivative, application
         89068; NOT redistributed -- see README section 3). Set the folder
         holding it in the environment variable UKB or pass it as the first
         command-line argument.
-Output: results/reply_to_cirillo/trend_altcutoff_summary.csv  (one row per
-        cancer x cutoff) and altcutoff_cells.csv (cell-level HRs). Both hold
-        aggregate estimates only.
+Output: output/reply_to_cirillo/trend_altcutoff_summary.csv  (one row per
+        cancer x cutoff) and altcutoff_cells.csv (cell-level HRs).
 
 Requires: numpy, pandas, scipy. Runtime ~10-20 minutes.
 The Stata twin of this script is 01_trend_altcutoff.do.
@@ -39,7 +38,7 @@ UKB = os.environ.get("UKB") or (sys.argv[1] if len(sys.argv) > 1 else None)
 if UKB is None:
     sys.exit("Set the UKB environment variable (folder holding "
              "251025_sugar_data_for_cox.dta) or pass it as the first argument.")
-OUTDIR = os.path.join(ROOT, "results", "reply_to_cirillo")
+OUTDIR = os.path.join(ROOT, "output", "reply_to_cirillo")
 os.makedirs(OUTDIR, exist_ok=True)
 
 COVS = ["smoking", "college"] + [f"pca{i}" for i in range(1, 11)] + \

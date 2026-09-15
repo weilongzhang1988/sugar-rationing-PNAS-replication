@@ -18,7 +18,7 @@ reproducing the comment's figures (the comment does not list them).
 
 Input:  data/NFS/Dataset_1000days_NUTRITION_Fig_S3.dta,
         data/NFS/Dataset_1000days_Fig_S1.dta (sugar, kcal/day)
-Output: results/reply_to_cirillo/table2_NFS_harmonised.csv
+Output: output/reply_to_cirillo/table2_NFS_harmonised.csv
 Requires: pandas.
 """
 import os
@@ -27,7 +27,7 @@ import pandas as pd
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 NFS = os.path.join(ROOT, "data", "NFS")
-OUTDIR = os.path.join(ROOT, "results", "reply_to_cirillo")
+OUTDIR = os.path.join(ROOT, "output", "reply_to_cirillo")
 os.makedirs(OUTDIR, exist_ok=True)
 
 PRE = (pd.Period("1952Q4"), pd.Period("1953Q3"))
