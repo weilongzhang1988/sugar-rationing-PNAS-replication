@@ -19,7 +19,13 @@ PNAS_replication/
 │       ├── Dataset_1000days_NUTRITION_Fig_S3.dta  # food category panel (Fig S3)
 │       ├── Dataset_1000days_SALES_Fig_S2.dta  # sugar/sweets sales
 │       └── Dataset_1000days_foodafford.dta    # food prices (Fig S5)
+├── results/
+│   └── reply_to_cirillo/           # aggregate estimates behind the reply to Cirillo (2026)
 ├── code/
+│   ├── reply_to_cirillo/           # reply to Cirillo (2026): Tables 1 and 2
+│   │   ├── 01_trend_altcutoff.py   # Table 1 (Python; needs UKB data)
+│   │   ├── 01_trend_altcutoff.do   # Table 1 (Stata twin)
+│   │   └── 02_table2_NFS_harmonised.py  # Table 2 (NFS data only)
 │   ├── main/                       # produces every figure and table in the main text
 │   │   ├── 01_table1_balance.do
 │   │   ├── 02_fig1_cancer_event_study.do
@@ -79,6 +85,15 @@ Researchers wishing to reproduce these results must apply to UK Biobank in
 their own right (see the data availability statement in the paper). The
 National Food Survey data redistributed in `data/NFS/` are public and were
 digitised by Gracner et al. (2024).
+
+**Codebook note (NFS food-category panel).** In
+`Dataset_1000days_NUTRITION_Fig_S3.dta` the six variables whose names end in
+`_gday10` (`MilkCream_gday10`, `freshfruit_gday10`, `Vegetables_gday10`,
+`bread_gday10`, `totalcereals_gday10`, `Meats_gday10`) are stored in **tens of
+grams per day**; multiply by 10 to obtain g/day. All other `_gday` variables
+are in grams per day. The variable label of `bread_gday10` omits the
+"(in 10s)" flag carried by the other five; the name suffix is authoritative.
+`totalcereals_gday10` already includes bread and flour.
 
 ---
 
@@ -156,7 +171,31 @@ by scripts 02, 03, and 04. The component PDFs are written to
 
 ---
 
-## 6. Citation
+## 6. Reply to Cirillo (PNAS Letter, 2026)
+
+`code/reply_to_cirillo/` holds the code behind the two tables in our reply to
+N. Cirillo, "Reassessing the causal interpretation of the UK sugar-rationing
+natural experiment" (PNAS, 2026). `results/reply_to_cirillo/` holds the
+aggregate output (hazard ratios, confidence intervals, test statistics, sample
+and event counts); no individual-level UK Biobank data are included.
+
+| Reply exhibit | Script | Output |
+|---|---|---|
+| Table 1 — HR per six months under rationing, three cutoffs, departure-from-linearity test | `reply_to_cirillo/01_trend_altcutoff.py` (or the Stata twin `01_trend_altcutoff.do`) | `results/reply_to_cirillo/trend_altcutoff_summary.csv`, `altcutoff_cells.csv` |
+| Table 2 — NFS purchase changes, as reported vs harmonised units | `reply_to_cirillo/02_table2_NFS_harmonised.py` | `results/reply_to_cirillo/table2_NFS_harmonised.csv` |
+
+Table 1 needs `251025_sugar_data_for_cox.dta` (UK Biobank, application 89068,
+not redistributed; see section 3). Run the Python version with the folder
+holding that file in the environment variable `UKB` (or as the first argument);
+it uses Breslow ties and Lin-Wei cluster-robust standard errors by month of
+birth, and reproduces SI Table S2 to three decimals. Table 2 runs from the
+redistributed NFS data alone. The `k` column in the summary and cell files
+indexes the cutoff: 0 = 26 September 1953 (published), 1 = end June 1953,
+2 = end March 1953.
+
+---
+
+## 7. Citation
 
 If you use this replication package, please cite both the paper and the
 underlying data sources:

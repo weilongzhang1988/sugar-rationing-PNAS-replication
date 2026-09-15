@@ -76,6 +76,11 @@ do "${CODE}/appendix/08_figS8_liver_C22_vs_HCC.do"      // SI Fig S8 (panels a,b
 do "${CODE}/appendix/09_KM_logrank_tableS8.do"          // SI Table S8 (KM + log-rank)
 do "${CODE}/appendix/16_figS6_all_category_age50.do"    // SI Fig S6 (food intake by category)
 
+* --- Reply to Cirillo (PNAS Letter, 2026) --------------------------------
+* Not part of the paper's exhibits; run separately if wanted (Table 1 of the
+* reply; Table 2 is produced by code/reply_to_cirillo/02_table2_NFS_harmonised.py).
+* do "${CODE}/reply_to_cirillo/01_trend_altcutoff.do"
+
 * --- Appendix tables ------------------------------------------------------
 do "${CODE}/appendix/13_tableS9_england_only.do"        // SI Table S9
 do "${CODE}/appendix/10_tableS9_S10_S11_S12_representativeness.do" // SI Tables S10, S11, S12
