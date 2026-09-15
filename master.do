@@ -77,9 +77,8 @@ do "${CODE}/appendix/09_KM_logrank_tableS8.do"          // SI Table S8 (KM + log
 do "${CODE}/appendix/16_figS6_all_category_age50.do"    // SI Fig S6 (food intake by category)
 
 * --- Reply to Cirillo (PNAS Letter, 2026) --------------------------------
-* Not part of the paper's exhibits; run separately if wanted (Table 1 of the
-* reply; Table 2 is produced by code/reply_to_cirillo/02_table2_NFS_harmonised.py).
-* do "${CODE}/reply_to_cirillo/01_trend_altcutoff.do"
+* Not part of the paper's exhibits. The two Python scripts in
+* code/reply_to_cirillo/ produce the reply's Tables 1 and 2 (see README, section 6).
 
 * --- Appendix tables ------------------------------------------------------
 do "${CODE}/appendix/13_tableS9_england_only.do"        // SI Table S9

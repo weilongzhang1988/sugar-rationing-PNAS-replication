@@ -22,7 +22,6 @@ PNAS_replication/
 ├── code/
 │   ├── reply_to_cirillo/           # reply to Cirillo (2026): Tables 1 and 2
 │   │   ├── 01_trend_altcutoff.py   # Table 1 (Python; needs UKB data)
-│   │   ├── 01_trend_altcutoff.do   # Table 1 (Stata twin)
 │   │   └── 02_table2_NFS_harmonised.py  # Table 2 (NFS data only)
 │   ├── main/                       # produces every figure and table in the main text
 │   │   ├── 01_table1_balance.do
@@ -177,11 +176,11 @@ natural experiment" (PNAS, 2026). Outputs are written to `output/reply_to_cirill
 
 | Reply exhibit | Script | Output |
 |---|---|---|
-| Table 1 — HR per six months under rationing, three cutoffs, departure-from-linearity test | `reply_to_cirillo/01_trend_altcutoff.py` (or the Stata twin `01_trend_altcutoff.do`) | `output/reply_to_cirillo/trend_altcutoff_summary.csv`, `altcutoff_cells.csv` |
+| Table 1 — HR per six months under rationing, three cutoffs, departure-from-linearity test | `reply_to_cirillo/01_trend_altcutoff.py` | `output/reply_to_cirillo/trend_altcutoff_summary.csv`, `altcutoff_cells.csv` |
 | Table 2 — NFS purchase changes, as reported vs harmonised units | `reply_to_cirillo/02_table2_NFS_harmonised.py` | `output/reply_to_cirillo/table2_NFS_harmonised.csv` |
 
 Table 1 needs `251025_sugar_data_for_cox.dta` (UK Biobank, application 89068,
-not redistributed; see section 3). Run the Python version with the folder
+not redistributed; see section 3). Run it with the folder
 holding that file in the environment variable `UKB` (or as the first argument);
 it uses Breslow ties and Lin-Wei cluster-robust standard errors by month of
 birth, and reproduces SI Table S2 to three decimals. Table 2 runs from the

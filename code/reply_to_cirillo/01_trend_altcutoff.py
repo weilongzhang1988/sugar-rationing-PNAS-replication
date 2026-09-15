@@ -23,7 +23,6 @@ Output: output/reply_to_cirillo/trend_altcutoff_summary.csv  (one row per
         cancer x cutoff) and altcutoff_cells.csv (cell-level HRs).
 
 Requires: numpy, pandas, scipy. Runtime ~10-20 minutes.
-The Stata twin of this script is 01_trend_altcutoff.do.
 """
 import os
 import sys
